@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include<string.h>
+int main(){
+char s[100];
+printf("Give the passworrd ");
+scanf("%99s",s);
+if(strcmp(s,"asd")==0) {
+	printf("corect passworrd\n");
+	printf("We are Trial and error\n");
+}
+else {
+	printf("incorect password\n");
+}
+} 
