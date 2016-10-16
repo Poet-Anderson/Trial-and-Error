@@ -1,0 +1,56 @@
+#!/bin/bash
+echo "~~~~~~~~~~~"
+echo "Host Info "
+echo "~~~~~~~~~~~"
+func(){
+
+	local dnsips=$(sed -e '/^$/d' /etc/resolv.conf | awk '{if (tolower($1)=="nameserver") print $2}')
+	
+	echo "Hostname : $(hostname -s)"
+	echo "DNS domain : $(hostname -d)"
+	echo "Fully qualified domain name : $(hostname -f)"
+	echo "Network address (IP) :  $(hostname -i)"
+	echo "DNS name servers (DNS IP) : ${dnsips}"
+	
+}
+func
+	
+
+	echo "***********************"
+	echo "*** Network routing ***"
+	echo "***********************"
+	netstat -nr
+
+	echo "**************************************"
+	echo "*** Interface traffic information ***"
+	echo "**************************************"
+	netstat -i
+
+
+echo "~~~~~~~~~~~~";
+echo "Os version"
+echo "~~~~~~~~~~~~";
+cat /etc/issue
+echo "~~~~~~~~~~";
+echo " Spec";
+echo "~~~~~~~~~~";
+lspci | grep VGA
+
+fdisk -l
+echo "~~~~~~~~"
+echo "file";
+echo "~~~~~~~~"
+LC_COLLATE=C ls -FCas "$@"
+echo "~~~~~~~~~~~";
+echo "MOre INfo";
+echo "~~~~~~~~~~~";
+ls -lha 
+echo "~~~~~~~~";
+echo "Disk Space Utilization";
+echo "~~~~~~~~";
+df -mh
+echo "~~~~~~~~"
+echo "Up time";
+echo "~~~~~~~~"
+uptime
+
